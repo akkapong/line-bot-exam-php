@@ -23,12 +23,13 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
-			if (($sender == $master) && ($event['message']['text'] == "ดันเต็ม!!"))
-			{
-				sendMessage($event['message']['text'], $replyToken);
-			} else {
-				sendMessage($event['message']['text']+'!!!!!', $replyToken);
-			}
+			// if (($sender == $master) && ($event['message']['text'] == "ดันเต็ม!!"))
+			// {
+			// 	sendMessage($event['message']['text'], $replyToken);
+			// } else {
+			// 	sendMessage($event['message']['text']+'!!!!!', $replyToken);
+			// }
+			sendMessage(json_encode($event['message']['text']), $replyToken);
 		}
 	}
 }
