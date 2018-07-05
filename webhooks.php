@@ -29,7 +29,7 @@ if (!is_null($events['events'])) {
 			// } else {
 			// 	sendMessage($event['message']['text']+'!!!!!', $replyToken);
 			// }
-			sendMessage(json_encode($event), $replyToken);
+			echo sendMessage(json_encode($event), $replyToken);
 		}
 	}
 }
@@ -65,6 +65,6 @@ function sendMessage($text, $replyToken)
 	$result = curl_exec($ch);
 	curl_close($ch);
 
-	echo $result . "\r\n";
+	return $result . "\r\n";
 }
 echo "OK";
