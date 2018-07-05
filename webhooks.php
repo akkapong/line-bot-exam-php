@@ -29,7 +29,7 @@ if (!is_null($events['events'])) {
 			// } else {
 			// 	sendMessage($event['message']['text']+'!!!!!', $replyToken);
 			// }
-			sendMessage(json_encode($event['message']['text']), $replyToken);
+			sendMessage(json_encode($event), $replyToken);
 		}
 	}
 }
