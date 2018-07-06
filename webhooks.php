@@ -13,15 +13,15 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
 function replyMessage($messages, $replyToken) {
-	global $access_token;
+	
 	// Make a POST Request to Messaging API to reply to sender
 	$url = 'https://api.line.me/v2/bot/message/reply';
 	$data = [
 		'replyToken' => $replyToken,
-		'messages' => [$messages],
+		'messages'   => [$messages]
 	];
-	$post = json_encode($data);
-	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+	$post    = json_encode($data);
+	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $GLOBALS['access_token']);
 
 	$ch = curl_init($url);
 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -71,11 +71,6 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-
-// function getMessage()
-// {
-
-// }
 
 
 echo "OK";
