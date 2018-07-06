@@ -12,8 +12,8 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 
-function replyMessage($messages, $replyToken)
-{
+function replyMessage($messages, $replyToken) {
+	global $access_token;
 	// Make a POST Request to Messaging API to reply to sender
 	$url = 'https://api.line.me/v2/bot/message/reply';
 	$data = [
