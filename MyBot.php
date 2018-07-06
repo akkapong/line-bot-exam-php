@@ -20,7 +20,7 @@ class MyBot {
 	}
 
 	public function replyMessage($replyToken, $message) {
-		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 		$response           = $this->bot->replyMessage($replyToken, $textMessageBuilder);
 		return $response->getHTTPStatus() . ' ' . $response->getRawBody();
 	}
