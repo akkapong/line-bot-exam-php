@@ -12,6 +12,24 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 
+function getMessage() {
+	$mode = "reply"
+	$messages = [
+		'type' => 'text',
+		'text' => "Reply : ".$event['message']['text']
+	];
+
+	if ($event['message']['text'] == "[hello]") {
+		$messages['text'] = "Hello!!";
+	} if ($event['message']['text'] == "[full]") {
+		$mode = "push";
+		$messages['text'] = "Test push";
+	} else {
+		$mode = "none";
+	}
+
+	return [$mode, $messages];
+}
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
@@ -24,14 +42,11 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
-			$messages = [
-				'type' => 'text',
-				'text' => "Reply : ".$event['message']['text']
-			];
+			//get message and mode
+			($mode, $messages) = getMessage($event);
 
-			if ($event['message']['text'] == "[hello]") {
-				$messages['text'] = "Hello!!";
-			}
+			//skip if don't know command
+			if ($mode == "none") continue;
 			
 			// if (!$messages) continue;
 			// Make a POST Request to Messaging API to reply to sender
