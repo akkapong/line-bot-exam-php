@@ -7,10 +7,10 @@ require "MyBot.php";
 //JAY
 //U6ea648a8d48e459bb7289b5fc6e7a477
 
-$content = file_get_contents('php://input');
-print_r($content);
+$userid  = $_GET['userid'];
+$message = $_GET['message'];
 
-$idPush = 'U451fc85ea12260354a24d5c20e035b09';
+// $idPush = 'U451fc85ea12260354a24d5c20e035b09';
 
 // $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 // $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
@@ -22,7 +22,7 @@ $idPush = 'U451fc85ea12260354a24d5c20e035b09';
 // echo "\n===================\n";
 
 $bot = new MyBot();
-// $res = $bot->manageTexMessage("push", [$idPush], "Test 1");
+$res = $bot->manageTexMessage("push", [$userid], $message);
 
 // echo "\n===================\n";
 
