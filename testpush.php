@@ -1,5 +1,6 @@
 <?php
 require "vendor/autoload.php";
+require "MyBot.php";
 $access_token = 'FetFmZCPdNnWyowKNXIwZlFnZd8F3OK8O4h0JxLtZgvjOaAvhXNG9oe8iZwhyK5IdQdZzkXTJdW7hT+665l9Ud5JRIsMbs/kY10BD1dfi+v7YoFNlxAjeWauV5TivF/EfzEprLEI/ynUOhgkn2SKgAdB04t89/1O/w1cDnyilFU=';
 $channelSecret = '166fe404020820ee2de356dc939170a6';
 $idPush = 'U451fc85ea12260354a24d5c20e035b09';
@@ -16,6 +17,6 @@ echo "\n===================\n";
 $bot = new MyBot();
 $bot->manageTexMessage("push", [$idPush], "Test 1")
 
-echo "\n===================\n";
+// echo "\n===================\n";
 
-$bot->pushMessage($idPush, "Test 2")
+// $bot->pushMessage($idPush, "Test 2")
