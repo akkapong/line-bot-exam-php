@@ -13,7 +13,8 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
 function getMessage($event) {
-	$mode = "reply"
+	$mode = "reply";
+	
 	$messages = [
 		'type' => 'text',
 		'text' => "Reply : ".$event['message']['text']
