@@ -21,8 +21,8 @@ function getMessage() {
 
 	if ($event['message']['text'] == "[hello]") {
 		$messages['text'] = "Hello!!";
-	} if ($event['message']['text'] == "[full]") {
-		$mode = "push";
+	} else if ($event['message']['text'] == "[full]") {
+		$mode             = "push";
 		$messages['text'] = "Test push";
 	} else {
 		$mode = "none";
