@@ -34,13 +34,13 @@ class MyBot() {
 		foreach ($tos as $to) {
 			switch ($mode) {
 				case "reply":
-					$res .= $this->replyMessage($to, $message);
+					$res = $this->replyMessage($to, $message);
 					break;
 				case "push":
-					$res .= $this->pushMessage($to, $message);
+					$res = $this->pushMessage($to, $message);
 					break;
 				default:
-					$res .= "";
+					$res = "";
 					break;
 			}
 		}
