@@ -10,6 +10,8 @@ require "MyBot.php";
 $userid  = $_GET['userid'];
 $message = $_GET['message'];
 
+var_dump($userid);
+var_dump($message);
 // $idPush = 'U451fc85ea12260354a24d5c20e035b09';
 
 // $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
