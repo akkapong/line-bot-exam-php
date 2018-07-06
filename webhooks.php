@@ -26,7 +26,7 @@ if (!is_null($events['events'])) {
 
 			$messages = [
 				'type' => 'text',
-				'text' => "Reply : "+$event['message']['text']
+				'text' => "Reply : ".$event['message']['text']
 			];
 
 			if ($event['message']['text'] == "$hello") {
