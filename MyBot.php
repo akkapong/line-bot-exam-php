@@ -1,4 +1,5 @@
 <?php
+require "vendor/autoload.php";
 
 class MyBot() {
 
@@ -7,7 +8,7 @@ class MyBot() {
 
 	private $bot;
 
-	function __construct(){
+	function __construct() {
 		$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($this->access_token);
 		$this->bot  = new \LINE\LINEBot($httpClient, ['channelSecret' => $this->channelSecret]);
 	}
