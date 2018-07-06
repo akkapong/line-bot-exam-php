@@ -20,7 +20,7 @@ function getMessage($event) {
 		case "[hello]":
 			$message = "Hello!!";
 			break;
-		case "[WAI]":
+		case "[wai]":
 			$message = "I am a bot!!";
 			break;
 		case "[userid]":
@@ -60,7 +60,8 @@ if (!is_null($events['events'])) {
 				$recevier = $list;
 			}
 
-			echo $bot->manageTexMessage($mode, $recevier, $message);
+			$res = $bot->manageTexMessage($mode, $recevier, $message);
+			echo $res;
 		}
 	}
 }
