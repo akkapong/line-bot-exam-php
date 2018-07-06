@@ -32,14 +32,12 @@ class MyBot {
 	public function manageTexMessage($mode, $tos, $message) {
 		$res = "";
 		foreach ($tos as $to) {
-			switch ($mode) {
-				case "reply":
-					$res = $this->replyMessage($to, $message);
-					break;
-				case "push":
-					$res = $this->pushMessage($to, $message);
-					break;
+			if ($mode == "reply") {
+				$res = $this->replyMessage($to, $message);
+			} else {
+				$res = $this->pushMessage($to, $message);
 			}
+			
 		}
 		return $res;
 	}
