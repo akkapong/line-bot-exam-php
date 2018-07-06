@@ -9,16 +9,14 @@ class MyBot {
 	private $bot;
 
 	function __construct() {
-		echo "XXXXXXXXXX";
 		$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($this->access_token);
 		$this->bot  = new \LINE\LINEBot($httpClient, ['channelSecret' => $this->channelSecret]);
-		echo "SSSSSSSSSS";
 	}
 
 	public function pushMessage($pushID, $message) {
 		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 		$response           = $this->bot->pushMessage($pushID, $textMessageBuilder);
-
+		var_dump($response);
 		return $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
 	}
@@ -37,7 +35,9 @@ class MyBot {
 			if ($mode == "reply") {
 				$res = $this->replyMessage($to, $message);
 			} else {
+				echo "push\n";
 				$res = $this->pushMessage($to, $message);
+				echo $res."\n";
 			}
 			
 		}
