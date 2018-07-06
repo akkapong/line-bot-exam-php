@@ -46,7 +46,7 @@ if (!is_null($events['events'])) {
 			($mode, $messages) = getMessage($event);
 
 			//skip if don't know command
-			if ($mode == "none") continue;
+			// if ($mode == "none") continue;
 			
 			// if (!$messages) continue;
 			// Make a POST Request to Messaging API to reply to sender
