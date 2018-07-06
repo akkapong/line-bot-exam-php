@@ -1,6 +1,5 @@
 <?php // callback.php
 
-require "vendor/autoload.php";
 require "MyBot.php";
 
 $list = ["U451fc85ea12260354a24d5c20e035b09"];
@@ -59,7 +58,7 @@ if (!is_null($events['events'])) {
 
 			$bot      = new MyBot();
 			$recevier = [$replyToken];
-			
+
 			if ($mode == "push") {
 				$recevier = $list;
 			}
