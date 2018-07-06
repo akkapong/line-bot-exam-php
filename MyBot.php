@@ -15,7 +15,7 @@ class MyBot() {
 
 	public function pushMessage($pushID, $message) {
 		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
-		$response           = $yhis->bot->pushMessage($pushID, $textMessageBuilder);
+		$response           = $this->bot->pushMessage($pushID, $textMessageBuilder);
 
 		return $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
@@ -23,7 +23,7 @@ class MyBot() {
 
 	public function replyMessage($replyToken, $message) {
 		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
-		$response           = $yhis->bot->replyText($replyToken, $textMessageBuilder);
+		$response           = $this->bot->replyText($replyToken, $textMessageBuilder);
 
 		return $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
