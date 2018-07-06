@@ -14,7 +14,7 @@ $events = json_decode($content, true);
 
 function getMessage($event) {
 	$mode = "reply";
-	
+
 	$messages = [
 		'type' => 'text',
 		'text' => "Reply : ".$event['message']['text']
@@ -44,7 +44,7 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			//get message and mode
-			($mode, $messages) = getMessage($event);
+			list($mode, $messages) = getMessage($event);
 
 			//skip if don't know command
 			// if ($mode == "none") continue;
