@@ -12,7 +12,7 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 
-function getMessage() {
+function getMessage($event) {
 	$mode = "reply"
 	$messages = [
 		'type' => 'text',
