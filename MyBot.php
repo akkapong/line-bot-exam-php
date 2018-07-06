@@ -16,16 +16,12 @@ class MyBot {
 	public function pushMessage($pushID, $message) {
 		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 		$response           = $this->bot->pushMessage($pushID, $textMessageBuilder);
-		var_dump($response);
 		return $response->getHTTPStatus() . ' ' . $response->getRawBody();
-
 	}
 
 	public function replyMessage($replyToken, $message) {
 		$response           = $this->bot->replyText($replyToken, $message);
-
 		return $response->getHTTPStatus() . ' ' . $response->getRawBody();
-
 	}
 
 	public function manageTexMessage($mode, $tos, $message) {
