@@ -22,8 +22,7 @@ class MyBot {
 	}
 
 	public function replyMessage($replyToken, $message) {
-		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
-		$response           = $this->bot->replyText($replyToken, $textMessageBuilder);
+		$response           = $this->bot->replyText($replyToken, $message);
 
 		return $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
@@ -35,9 +34,7 @@ class MyBot {
 			if ($mode == "reply") {
 				$res = $this->replyMessage($to, $message);
 			} else {
-				echo "push\n";
 				$res = $this->pushMessage($to, $message);
-				echo $res."\n";
 			}
 			
 		}
