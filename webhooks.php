@@ -2,7 +2,13 @@
 
 require "MyBot.php";
 
-$list = ["U451fc85ea12260354a24d5c20e035b09"];
+$list = [
+	"U451fc85ea12260354a24d5c20e035b09", //me
+	"Ue53f3c108ea7050c4fe42e9b8adfbc42", //k
+	"Ufb0a78ed8e25985e00a00b3b363099c3", //flok
+	"U420f548392a97fe4cb7c7c64e4293e44", //phol
+	"U64d87d61ed0b5946e739560a6b4c7675", //yang
+];
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -31,7 +37,7 @@ function getMessage($event) {
 			break;
 		case "[full]":
 			$mode    = "push";
-			$message = "Test push";
+			$message = "ดันเต็มแล้วนะครับ!!";
 			break;
 	}
 
