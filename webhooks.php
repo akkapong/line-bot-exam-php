@@ -18,15 +18,15 @@ function getMessage($event) {
 
 	switch ($command) {
 		case "[hello]":
-			$mode    = "replay";
+			$mode    = "reply";
 			$message = "Hello!!";
 			break;
 		case "[wai]":
-			$mode    = "replay";
+			$mode    = "reply";
 			$message = "I am a bot!!";
 			break;
 		case "[userid]":
-			$mode    = "replay";
+			$mode    = "reply";
 			$message = "Your ID: ".$event['source']['userId'];
 			break;
 		case "[full]":
