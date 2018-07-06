@@ -1,7 +1,7 @@
 <?php // callback.php
 
-// require "vendor/autoload.php";
-// require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
+require "vendor/autoload.php";
+require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 
 $access_token = 'FetFmZCPdNnWyowKNXIwZlFnZd8F3OK8O4h0JxLtZgvjOaAvhXNG9oe8iZwhyK5IdQdZzkXTJdW7hT+665l9Ud5JRIsMbs/kY10BD1dfi+v7YoFNlxAjeWauV5TivF/EfzEprLEI/ynUOhgkn2SKgAdB04t89/1O/w1cDnyilFU=';
 
@@ -26,27 +26,19 @@ if (!is_null($events['events'])) {
 
 			$messages = [
 				'type' => 'text',
-				'text' => ""
+				'text' => "Reply : "+$event['message']['text']
 			];
 
-			switch ($event['message']['text']) {
-				// case "$dunfull" : 
-				// 	$messages['text'] = "";
-				// 	break;
-				case "$hello" :
-					$messages['text'] = "Hello !!";
-					break;
-				default:
-					$messages['text'] = "Reply : "+$event['message']['text'];
-					break;
+			if ($event['message']['text'] == "$hello") {
+				$messages['text'] = "Hello!!";
 			}
 			
-			if (!$messages) continue;
+			// if (!$messages) continue;
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
-				'messages'   => [$messages]
+				'messages'   => [$messages],
 			];
 			$post    = json_encode($data);
 			$headers = ['Content-Type: application/json', 'Authorization: Bearer ' . $access_token];
