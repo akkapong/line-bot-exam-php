@@ -37,7 +37,7 @@ if (!is_null($events['events'])) {
 					$messages['text'] = "Hello !!";
 					break;
 				default:
-					$messages = [];
+					$messages['text'] = "Reply : "+$event['message']['text'];
 					break;
 			}
 			
@@ -49,7 +49,7 @@ if (!is_null($events['events'])) {
 				'messages'   => [$messages]
 			];
 			$post    = json_encode($data);
-			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			$headers = ['Content-Type: application/json', 'Authorization: Bearer ' . $access_token];
 
 			$ch = curl_init($url);
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
