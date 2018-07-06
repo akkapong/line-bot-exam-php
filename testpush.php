@@ -10,3 +10,12 @@ $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello
 $response = $bot->pushMessage($idPush, $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+
+echo "\n===================\n";
+
+$bot = new MyBot();
+$bot->manageTexMessage("push", [$idPush], "Test 1")
+
+echo "\n===================\n";
+
+$bot->pushMessage($idPush, "Test 2")
