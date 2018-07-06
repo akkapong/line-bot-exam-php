@@ -1,7 +1,7 @@
 <?php
 require "vendor/autoload.php";
 
-class MyBot() {
+class MyBot {
 
 	private $access_token = 'FetFmZCPdNnWyowKNXIwZlFnZd8F3OK8O4h0JxLtZgvjOaAvhXNG9oe8iZwhyK5IdQdZzkXTJdW7hT+665l9Ud5JRIsMbs/kY10BD1dfi+v7YoFNlxAjeWauV5TivF/EfzEprLEI/ynUOhgkn2SKgAdB04t89/1O/w1cDnyilFU=';
 	private $channelSecret = '166fe404020820ee2de356dc939170a6';
@@ -38,9 +38,6 @@ class MyBot() {
 					break;
 				case "push":
 					$res = $this->pushMessage($to, $message);
-					break;
-				default:
-					$res = "";
 					break;
 			}
 		}
