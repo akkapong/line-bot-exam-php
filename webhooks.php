@@ -11,6 +11,30 @@ $master = 'U451fc85ea12260354a24d5c20e035b09';
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
+
+function replyMessage($messages, $replyToken)
+{
+	// Make a POST Request to Messaging API to reply to sender
+	$url = 'https://api.line.me/v2/bot/message/reply';
+	$data = [
+		'replyToken' => $replyToken,
+		'messages' => [$messages],
+	];
+	$post = json_encode($data);
+	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+	$ch = curl_init($url);
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+	$result = curl_exec($ch);
+	curl_close($ch);
+
+	echo $result . "\r\n";
+}
+
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
@@ -23,41 +47,27 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
-			// if (($sender == $master) && ($event['message']['text'] == "ดันเต็ม!!"))
-			// {
-			// 	sendMessage($event['message']['text'], $replyToken);
-			// } else {
-			// 	sendMessage($event['message']['text']+'!!!!!', $replyToken);
-			// }
-			// Build message to reply back
-			if (($sender == $master) && ($event['message']['text'] == "ดันเต็ม!!"))
-			{
-				$messages = [
-					'type' => 'text',
-					'text' => "ดันเต็มแล้วครับ U64d87d61ed0b5946e739560a6b4c7675 @SW FURNITURE"
-				];
+			$messages = [
+				'type' => 'text',
+				'text' => ""
+			];
 
-				// Make a POST Request to Messaging API to reply to sender
-				$url = 'https://api.line.me/v2/bot/message/reply';
-				$data = [
-					'replyToken' => $replyToken,
-					'messages' => [$messages],
-				];
-				$post = json_encode($data);
-				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-
-				$ch = curl_init($url);
-				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-				$result = curl_exec($ch);
-				curl_close($ch);
-
-				echo $result . "\r\n";
+			switch ($event['message']['text']) {
+				case "#dunfull" : 
+					$messages['text'] = "ดันเต็มแล้วครับ @SW FURNITURE";
+					break;
+				case "#hello" :
+					$messages['text'] = "Hello !!";
+					break;
+				default:
+					$messages = [];
+					break;
 			}
 			
+			if (!$messages) {
+				replyMessage($messages, $replyToken);
+			}
+
 		}
 	}
 }
@@ -67,8 +77,5 @@ if (!is_null($events['events'])) {
 
 // }
 
-// function sendMessage($text, $replyToken)
-// {
-	
-// }
+
 echo "OK";
