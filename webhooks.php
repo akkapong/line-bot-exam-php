@@ -10,11 +10,11 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
 function getMessage($event) {
-	$mode    = "reply";
+	$mode    = "none";
 	
 	$message = "Reply : ".$event['message']['text'];
 	
-	$command = $event['message']['text']
+	$command = $event['message']['text'];
 
 	switch ($command) {
 		case "[hello]":
@@ -29,9 +29,6 @@ function getMessage($event) {
 		case "[full]":
 			$mode    = "push";
 			$message = "Test push";
-			break;
-		default:
-			$mode = "none";
 			break;
 	}
 
