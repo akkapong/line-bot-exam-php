@@ -10,6 +10,7 @@ $list = [
 	"U64d87d61ed0b5946e739560a6b4c7675", //yang
 	"Ud706829e7f0d84e9c3e64769688a7b33", //thanoom
 	"Uc6a6f44d8c15c1d3e7d163e23c2290ce", //Poppy
+	"Uba2d5004f23209b5094170b89ee08d73", //Chain
 ];
 
 // Get POST body content
