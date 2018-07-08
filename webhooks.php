@@ -2,7 +2,7 @@
 
 require "MyBot.php";
 
-require "members.php";
+$list = require "members.php";
 
 // Get POST body content
 $content = file_get_contents('php://input');
